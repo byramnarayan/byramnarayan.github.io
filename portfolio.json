@@ -41,7 +41,7 @@
     {
       "title": "AgriAssist",
       "summary": "National Level Hackathon Winner Project With Working Prototype",
-      "url": "",
+      "url": "https://youtu.be/gOBz5JPe_7c",
       "highlights": [
         "Developed and deployed a full-stack AgriAssist application using FastAPI + PostgreSQL + Neo4j, reducing end-to-end farm recommendation latency by 40% and improving user onboarding retention by 15%.",
         "Contributed on building ML vision and recommendation pipelines (YOLOv8 model + agent-based crop advice modules), enabling automated plant health detection and personalized crop suggestions for farmers with accuracy in disease/deficiency alerts in 5Km Range.",
@@ -52,7 +52,7 @@
     {
       "title": "MindX AI",
       "summary": "HIPAA-compliant multi-agent AI system for mental health support.",
-      "url": "",
+      "url": "https://youtu.be/RNewzoHub1A?si=g8nsM51rPOCpuZnU",
       "highlights": [
         "Engineered HIPAA-compliant Firebase backend with data anonymization enabling institutional analytics while maintaining complete user privacy.",
         "Built multi-agent AI system using Neo4J Knowledge Graph for culturally-aware mental health support with clinical risk assessment (PHQ-9/GAD-7).",
@@ -65,7 +65,7 @@
     {
       "organization": "AI&ML Student association",
       "position": "Technical Head",
-      "url": "",
+      "url": "https://drive.google.com/file/d/1o5TY0rZ8YwqTXIedrnWI3j4OrF0t6zqi/view?usp=drive_link",
       "start_date": "",
       "end_date": "Present",
       "summary": "Handle Nakshatra National Level hackathon & Events hosted in College",
