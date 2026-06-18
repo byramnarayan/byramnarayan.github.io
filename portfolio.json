@@ -1,0 +1,134 @@
+{
+  "name": "Ramnarayan Maurya",
+  "label": "Computer Engineering in A.I. & M.L.",
+  "image_path": "img/default-image.png",
+  "contact": {
+    "email": "byramnarayan@gmail.com",
+    "phone": "+91 72082-19103",
+    "location": "Mumbai, IND"
+  },
+  "summary": "Computer Engineering student specializing in A.I. & M.L. with experience in full-stack development, GenAI, cloud computing, and multi-agent AI systems.",
+  "base_url": "127.0.0.1:5500",
+  "social_links": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/byramnarayan/",
+      "svg_path": "img/linkedin.svg"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/byramnarayan",
+      "svg_path": "img/github.svg"
+    }
+  ],
+  "work_experience": [
+    {
+      "company": "ASPIRE INSTITUTE",
+      "position": "Leadership Fellow",
+      "url": "",
+      "start_date": "Oct 2025",
+      "end_date": "Present",
+      "summary": "Fellowship from Harvard faculty and Ivy League educators, focusing on AI, global action, and community challenges.",
+      "highlights": [
+        "Develop 5 key GenAI leadership skills (Agility, Negotiation, Values-Based Leadership, etc.) and principles for managing AI-driven digital transformation.",
+        "Develop Prototype in GenAI to Help Community to address their Problems with anonymous Support.",
+        "Engaged in 2 dedicated Catch-up/Feedback weeks and multiple peer sessions, reinforcing skills in team dynamics and cross-cultural communication.",
+        "Engaged in live learning and discussions within a global cohort of 7,000+ peers and mentors to master cross-cultural collaboration."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "AgriAssist",
+      "summary": "National Level Hackathon Winner Project With Working Prototype",
+      "url": "",
+      "highlights": [
+        "Developed and deployed a full-stack AgriAssist application using FastAPI + PostgreSQL + Neo4j, reducing end-to-end farm recommendation latency by 40% and improving user onboarding retention by 15%.",
+        "Contributed on building ML vision and recommendation pipelines (YOLOv8 model + agent-based crop advice modules), enabling automated plant health detection and personalized crop suggestions for farmers with accuracy in disease/deficiency alerts in 5Km Range.",
+        "Built backend microservices and blockchain integration for carbon credits and verification, supporting 3 data sources (relational, graph, AI) and improving data sync reliability to 99.5% availability in production environments."
+      ],
+      "images": []
+    },
+    {
+      "title": "MindX AI",
+      "summary": "HIPAA-compliant multi-agent AI system for mental health support.",
+      "url": "",
+      "highlights": [
+        "Engineered HIPAA-compliant Firebase backend with data anonymization enabling institutional analytics while maintaining complete user privacy.",
+        "Built multi-agent AI system using Neo4J Knowledge Graph for culturally-aware mental health support with clinical risk assessment (PHQ-9/GAD-7).",
+        "Deployed and monitored the entire code base on Google cloud run."
+      ],
+      "images": []
+    }
+  ],
+  "volunteer_experience": [
+    {
+      "organization": "AI&ML Student association",
+      "position": "Technical Head",
+      "url": "",
+      "start_date": "",
+      "end_date": "Present",
+      "summary": "Handle Nakshatra National Level hackathon & Events hosted in College",
+      "highlights": []
+    }
+  ],
+  "education": [
+    {
+      "institution": "UNIVERSITY OF MUMBAI [ A. P. Shah Institute of Technology, Thane ]",
+      "location": "Mumbai, INDIA",
+      "url": "",
+      "degrees": [
+        "Bachelor of Engineering in Computer Engineering in A.I. & M.L."
+      ],
+      "honors": [],
+      "gpa_cumulative": "3.02/4.00",
+      "gpa_major": "",
+      "graduation_date": "Apr 2027"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "proficiency": 90,
+      "proficiency_label": "Python, C Programming, JavaScript, SQL"
+    },
+    {
+      "name": "Cloud Technologies",
+      "proficiency": 80,
+      "proficiency_label": "AWS IAM, EC2, S3, RDS"
+    },
+    {
+      "name": "GenAI & ML",
+      "proficiency": 85,
+      "proficiency_label": "Langchain, Google ADK, Langraph, Neo4j, mem0, HuggingFace"
+    },
+    {
+      "name": "Frameworks & Tools",
+      "proficiency": 85,
+      "proficiency_label": "FastAPI, Tailwind CSS, Basic React JS, AWS, Git, Docker"
+    }
+  ],
+  "interests": [],
+  "languages": [],
+  "references": [],
+  "certifications": [
+    {
+      "name": "AWS Academy Graduate - Cloud Foundations",
+      "url": "Credly Credential"
+    }
+  ],
+  "achievements": [
+    {
+      "name": "National Level HackOverflow 4.0 Hackathon 2026",
+      "description": "1st Runner Up - Win 25000Rs"
+    },
+    {
+      "name": "National Level Project Exhibition Cum Competition: Tantravihar 9.0",
+      "description": "1st Runner Up - Win 5000Rs"
+    },
+    {
+      "name": "Global Digital Health Society Hackathon 2025",
+      "description": "Qualifier of Round 1"
+    }
+  ]
+}
