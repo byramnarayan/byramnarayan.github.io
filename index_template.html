@@ -1,379 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ name }} - Portfolio</title>
+  <meta name="description" content="{{ name }} - {{ summary }}">
+  <meta name="author" content="{{ name }}">
 
-    <!-- Site Info -->
-    <title>{{ name }} - Portfolio</title>
-    <meta name="description" content="{{ name }} - {{ summary }}">
-    <meta name="author" content="{{ name }}">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Open Graph Tags: The title of the page for social media sharing. It can match the title tag or be more descriptive. -->
-    <meta property="og:title" content="{{ name }}">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/intro_sequence.css">
+</head>
+<body>
 
-    <!-- Open Graph Tags: Typically set to "website" for static sites or "article" for content-heavy pages. -->
-    <meta property="og:type" content="website">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">{{ name }}</div>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="/blog/" class="blog-link">Blog</a></li>
+    </ul>
+  </nav>
 
-    <!-- Open Graph Tags: The URL of the page, used to ensure link previews resolve to the correct page. -->
-    <meta property="og:url" content="{{ base_url }}/index.html">
-
-    <!-- Open Graph Tags: URL of an image that represents the page. Useful for link previews. -->
-    <meta property="og:image" content="{{ base_url }}/{{ image_path }}">
-
-    <!-- Open Graph Tags: Provides an alternative text for the image to improve accessibility. -->
-    <meta property="og:image:alt" content="{{ name }} Profile Image">
-
-    <!-- Preconnect for Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Custom Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-          rel="stylesheet">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/modern_normalize.css" />
-    <link rel="stylesheet" href="css/html5bp.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/scroll.css">
-
-    <!-- Set a theme color that matches your website's primary color -->
-    <meta name="theme-color" content="#fafafa">
-
-    <!-- Favicon for all browsers -->
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-
-    <!-- Apple touch icon for iOS devices -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/icon.png">
-
-    <!-- Web app manifest for Progressive Web Apps -->
-    <link rel="manifest" href="/site.webmanifest">
-
-    <!-- Content Security Policy: Uncomment to enhance security by restricting where content can be loaded from (useful for preventing certain attacks like XSS). Update if adding external sources (e.g., Google Fonts, Bootstrap CDN, analytics, etc). -->
-    <!-- <meta http-equiv="Content-Security-Policy" content=" default-src 'self'; script-src 'self' code.jquery.com; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com; img-src 'self' images.examplecdn.com; "> -->
-    <style>
-      .page-header {
-        color: #141414;
-      }
-      .page-header h1, .page-header h2, .page-header p, .page-header a, .page-header .header-label {
-        color: #141414 !important;
-      }
-      .page-header a:hover {
-        color: #000 !important;
-      }
-      .page-header .header-image {
-        border-color: #141414;
-      }
-    </style>
-  </head>
-
-  <body>
-    <header class="page-header">
-      <div class="container">
-        <div class="header-top flex-responsive">
-          {% if image_path %}
-            <img class="header-image"
-                 width="256"
-                 height="256"
-                 src="{{ image_path }}"
-                 alt="{{ name }} Profile Image" />
-          {% endif %}
-          <div class="header-info">
-            <h1>{{ name }}</h1>
-            {% if label %}<h2 class="header-label">{{ label }}</h2>{% endif %}
-            {% if contact.email or contact.phone or contact.location %}
-              <address>
-                <ul class="inline-list flex-responsive">
-                  {% if contact.email %}
-                    <li>
-                      <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
-                    </li>
-                  {% endif %}
-                  {% if contact.phone %}
-                    <li>
-                      <a href="tel:+{{ contact.phone | replace('-', '') }}">{{ contact.phone }}</a>
-                    </li>
-                  {% endif %}
-                  {% if contact.location %}<li>{{ contact.location }}</li>{% endif %}
-                </ul>
-              </address>
-            {% endif %}
-            {% if social_links %}
-              <ul class="inline-list flex-responsive">
-                {% for link in social_links %}
-                  <li>
-                    <a href="{{ link.url }}"
-                       rel="noopener noreferrer"
-                       aria-label="{{ link.label }}"
-                       class="link-with-icon">
-                      {% if link.svg_data %}{{ link.svg_data | safe }}{% endif %}
-                      {{ link.label }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-            {% if summary %}<p class="header-summary">{{ summary }}</p>{% endif %}
-          </div>
-        </div>
+  <!-- 2D Motion Graphics Header Sequence -->
+  <header class="stage" id="home">
+    <!-- Cinematic Intro Sequence -->
+    <div class="intro-scene">
+      <div class="intro-content">
+        <h1 class="intro-text-1">SYSTEM ONLINE.</h1>
+        <h2 class="intro-text-2">INITIALIZING AI PROTOCOLS...</h2>
       </div>
-    </header>
-
-    <div class="hero-pinned-section">
-      <div class="hero-img"></div>
-      <div class="hero-mask"></div>
-      <div class="hero-grid-overlay">
-        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkwMiIgaGVpZ2h0PSIxMTExIiB2aWV3Qm94PSIwIDAgMTkwMiAxMTExIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB4PSI3OTIuNjY2IiB5PSIxNTkuMzM0IiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSI3OTEuNjY3IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iNjM0LjMzNCIgeT0iMTU5LjMzNCIgd2lkdGg9IjE1OC4zMzMiIGhlaWdodD0iOTUwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iNDc2IiB5PSIxIiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSI5NTAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8cmVjdCB4PSIzMTcuNjY2IiB5PSIxNTkuMzM0IiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSI5NTAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8cmVjdCB4PSIxNTkuMzM0IiB5PSIxIiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSIxMTA4LjMzIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iOTUxIiB5PSIxIiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSI5NTAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8cmVjdCB4PSIxMTA5LjMzIiB5PSIxIiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSIxMTA4LjMzIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iMTI2Ny42NyIgeT0iMTU5LjMzNCIgd2lkdGg9IjE1OC4zMzMiIGhlaWdodD0iOTUwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iMTQyNiIgeT0iMSIgd2lkdGg9IjE1OC4zMzMiIGhlaWdodD0iOTUwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iMTU4NC4zMyIgeT0iMSIgd2lkdGg9IjE1OC4zMzMiIGhlaWdodD0iMTEwOC4zMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxyZWN0IHg9IjEiIHk9IjMxNy42NjYiIHdpZHRoPSIxNTguMzMzIiBoZWlnaHQ9IjE5MDAiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxIDMxNy42NjYpIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iMTU5LjMzNCIgeT0iNDc2IiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSIxNzQxLjY3IiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMTU5LjMzNCA0NzYpIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iMSIgeT0iNzkyLjY2NiIgd2lkdGg9IjE1OC4zMzMiIGhlaWdodD0iMTc0MS42NyIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDEgNzkyLjY2NikiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8cmVjdCB4PSIxIiB5PSI5NTEiIHdpZHRoPSIxNTguMzMzIiBoZWlnaHQ9IjE5MDAiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxIDk1MSkiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K" alt="" />
-      </div>
-
-      <div class="marker marker-1">
-        <span class="marker-icon"></span>
-        <p class="marker-label">Experience</p>
-      </div>
-
-      <div class="marker marker-2">
-        <span class="marker-icon"></span>
-        <p class="marker-label">Skills</p>
-      </div>
-
-      <div class="hero-content">
-          {% if work_experience %}
-            <div class="hero-content-block">
-              <div class="hero-content-copy">
-                <h2 class="section-heading">Work Experience</h2>
-                {% for job in work_experience %}
-                  <section>
-                    <h3>
-                      {% if job.url %}
-                        {{ job.position }} at <a href="{{ job.url }}">{{ job.company }}</a>
-                      {% else %}
-                        {{ job.position }} at {{ job.company }}
-                      {% endif %}
-                    </h3>
-                    {% if job.start_date and job.end_date %}
-                      <p class="section-label">{{ job.start_date }} - {{ job.end_date }}</p>
-                    {% endif %}
-                    {% if job.summary %}<p>{{ job.summary }}</p>{% endif %}
-                    {% if job.highlights %}
-                      <ul>
-                        {% for highlight in job.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                      </ul>
-                    {% endif %}
-                  </section>
-                {% endfor %}
-              </div>
-            </div>
-          {% endif %}
-
-          {% if projects %}
-            <div class="hero-content-block">
-              <div class="hero-content-copy">
-                <h2 class="section-heading">Projects</h2>
-                {% for project in projects %}
-                  <section>
-                    <h3>
-                      {% if project.url %}
-                        <a href="{{ project.url }}">{{ project.title }}</a>
-                      {% else %}
-                        {{ project.title }}
-                      {% endif %}
-                    </h3>
-                    {% if project.summary %}<p>{{ project.summary }}</p>{% endif %}
-                    {% if project.highlights %}
-                      <ul>
-                        {% for highlight in project.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                      </ul>
-                    {% endif %}
-                    {% if project.images %}
-                      <div class="gallery main-gallery">
-                        {% for img in project.images %}
-                          <figure>
-                            <img width="600"
-                                 height="338"
-                                 src="{{ img.img_path }}"
-                                 alt="{{ img.caption }}">
-                            <figcaption>{{ img.caption }}</figcaption>
-                          </figure>
-                        {% endfor %}
-                      </div>
-                    {% endif %}
-                  </section>
-                {% endfor %}
-              </div>
-            </div>
-          {% endif %}
-
-          {% if education %}
-            <div class="hero-content-block">
-              <div class="hero-content-copy">
-                <h2 class="section-heading">Education</h2>
-                {% for edu in education %}
-                  <section>
-                    <h3>
-                      {% if edu.url %}
-                        <a href="{{ edu.url }}">{{ edu.institution }}</a>
-                      {% else %}
-                        {{ edu.institution }}
-                      {% endif %}
-                    </h3>
-                    {% if edu.location %}<p class="section-label">{{ edu.location }}</p>{% endif %}
-                    {% if edu.degrees %}
-                      <h4>Degrees</h4>
-                      <ul>
-                        {% for deg in edu.degrees %}<li>{{ deg }}</li>{% endfor %}
-                      </ul>
-                    {% endif %}
-                    {% if edu.honors %}
-                      <h4>Honors</h4>
-                      <ul>
-                        {% for hon in edu.honors %}<li>{{ hon }}</li>{% endfor %}
-                      </ul>
-                    {% endif %}
-                    {% if edu.gpa_major or edu.gpa_cumulative or edu.graduation_date %}
-                      <p>
-                        {% if edu.gpa_major %}<span class="block">GPA in Major: {{ edu.gpa_major }}</span>{% endif %}
-                        {% if edu.gpa_cumulative %}<span class="block">Cumulative GPA: {{ edu.gpa_cumulative }}</span>{% endif %}
-                        {% if edu.graduation_date %}<span class="block">Graduation Date: {{ edu.graduation_date }}</span>{% endif %}
-                      </p>
-                    {% endif %}
-                  </section>
-                {% endfor %}
-              </div>
-            </div>
-          {% endif %}
-
-          {% if skills %}
-            <div class="hero-content-block">
-              <div class="hero-content-copy">
-                <h2 class="section-heading">Skills</h2>
-                <ul class="unstyled-list">
-                  {% for skill in skills %}
-                    <li>
-                      <h3>{{ skill.name }}</h3>
-                      <div class="skill-bar">
-                        <div class="skill-bar-fill w-{{ skill.proficiency }}"
-                             role="meter"
-                             aria-valuenow="{{ skill.proficiency }}"
-                             aria-valuemin="0"
-                             aria-valuemax="100">
-                          <span class="skill-bar-label">{{ skill.proficiency_label }}</span>
-                        </div>
-                      </div>
-                    </li>
-                  {% endfor %}
-                </ul>
-              </div>
-            </div>
-          {% endif %}
-
-          {% if volunteer_experience %}
-            <div class="hero-content-block">
-              <div class="hero-content-copy">
-                <h2 class="section-heading">Volunteer Experience</h2>
-                {% for vol in volunteer_experience %}
-                  <section>
-                    <h3>
-                      {% if vol.url %}
-                        {{ vol.position }} at <a href="{{ vol.url }}">{{ vol.organization }}</a>
-                      {% else %}
-                        {{ vol.position }} at {{ vol.organization }}
-                      {% endif %}
-                    </h3>
-                    {% if vol.start_date and vol.end_date %}
-                      <p class="section-label">{{ vol.start_date }} - {{ vol.end_date }}</p>
-                    {% endif %}
-                    {% if vol.summary %}<p>{{ vol.summary }}</p>{% endif %}
-                    {% if vol.highlights %}
-                      <ul>
-                        {% for highlight in vol.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                      </ul>
-                    {% endif %}
-                  </section>
-                {% endfor %}
-              </div>
-            </div>
-          {% endif %}
-
-          {% if references %}
-            <div class="hero-content-block">
-              <div class="hero-content-copy">
-                <h2 class="section-heading">References</h2>
-                {% for ref in references %}
-                  <section>
-                    {% if ref.name %}<h3>{{ ref.name }}</h3>{% endif %}
-                    {% if ref.relation %}<p class="section-label">{{ ref.relation }}</p>{% endif %}
-                    {% if ref.reference %}
-                      <blockquote>
-                        {{ ref.reference }}
-                      </blockquote>
-                    {% endif %}
-                  </section>
-                {% endfor %}
-              </div>
-            </div>
-          {% endif %}
-
-          {% if languages %}
-            <div class="hero-content-block">
-              <div class="hero-content-copy">
-                <h2 class="section-heading">Languages</h2>
-                <ul class="unstyled-list">
-                  {% for lang in languages %}
-                    <li>
-                      <h3>{{ lang.language }}</h3>
-                      <p class="section-label">{{ lang.fluency }}</p>
-                    </li>
-                  {% endfor %}
-                </ul>
-              </div>
-            </div>
-          {% endif %}
-
-          {% if interests %}
-            <div class="hero-content-block">
-              <div class="hero-content-copy">
-                <h2 class="section-heading">Interests</h2>
-                {% for interest in interests %}
-                  <section>
-                    <h3>{{ interest.name }}</h3>
-                    {% if interest.summary %}<p>{{ interest.summary }}</p>{% endif %}
-                    {% if interest.images %}
-                      <div class="gallery side-gallery">
-                        {% for img in interest.images %}
-                          <figure>
-                            <img width="600"
-                                 height="338"
-                                 src="{{ img.img_path }}"
-                                 alt="{{ img.caption }}">
-                            <figcaption>{{ img.caption }}</figcaption>
-                          </figure>
-                        {% endfor %}
-                      </div>
-                    {% endif %}
-                  </section>
-                {% endfor %}
-              </div>
-            </div>
-          {% endif %}
-
-      </div>
-      <div class="hero-scroll-progress-bar"></div>
+      <div class="intro-graphic"></div>
     </div>
 
-    <footer class="page-footer">
-      <div class="container">
-        <p>© {{ current_year }} {{ name }}. All rights reserved.</p>
-      </div>
-    </footer>
+    <!-- Final Hero State -->
+    <div class="hero-main">
+      <h1 style="font-size: clamp(3rem, 5vw, 5rem); margin-bottom: 1rem; text-align: center;">{{ name }}</h1>
+      <h2 style="font-size: clamp(1.2rem, 2vw, 2rem); color: var(--accent-blue); margin-bottom: 2rem;">{{ label }}</h2>
+      <p style="max-width: 600px; text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">{{ summary }}</p>
+      
+      {% if social_links %}
+        <div style="display: flex; gap: 1rem;">
+          {% for link in social_links %}
+            <a href="{{ link.url }}" target="_blank" style="padding: 0.5rem 1rem; border: 1px solid var(--card-border); border-radius: 8px; background: var(--card-bg); display: flex; align-items: center; gap: 0.5rem;">
+              {{ link.label }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </header>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/water_effect.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
-    <script src="js/scroll_effect.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+  <main class="container">
+    
+    <!-- Experience Section (Timeline) -->
+    {% if work_experience %}
+    <section id="experience" class="section">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        {% for job in work_experience %}
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">{{ job.start_date }} - {{ job.end_date }}</span>
+            <h3 class="timeline-title">{{ job.position }} @ {% if job.url %}<a href="{{ job.url }}">{{ job.company }}</a>{% else %}{{ job.company }}{% endif %}</h3>
+            <div class="timeline-desc">
+              <p>{{ job.summary }}</p>
+              {% if job.highlights %}
+                <ul>
+                  {% for hl in job.highlights %}<li>{{ hl }}</li>{% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Skills Section (Animated Chart) -->
+    <section id="skills" class="section">
+      <h2 class="section-title">Technical Proficiency</h2>
+      <div class="skills-container">
+        <canvas id="skillsChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Projects Section (Cards + SVG Diagram) -->
+    {% if projects %}
+    <section id="projects" class="section">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="card-grid">
+        {% for project in projects %}
+        <div class="card">
+          <h3 class="card-title">
+            {% if project.url %}<a href="{{ project.url }}">{{ project.title }}</a>{% else %}{{ project.title }}{% endif %}
+          </h3>
+          <div class="card-body">
+            <p>{{ project.summary }}</p>
+            {% if project.highlights %}
+              <ul>
+                {% for hl in project.highlights %}<li>{{ hl }}</li>{% endfor %}
+              </ul>
+            {% endif %}
+            
+            <!-- Specific injection for MindX AI SVG Architecture -->
+            {% if "MindX" in project.title %}
+            <div class="card-svg-wrapper">
+              <img src="img/architecture_diagram.svg" alt="MindX AI Architecture" style="width:100%; height:auto; display:block;">
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Achievements Section -->
+    {% if achievements %}
+    <section id="achievements" class="section">
+      <h2 class="section-title">Achievements</h2>
+      <div class="card-grid">
+        {% for ach in achievements %}
+        <div class="card">
+          <h3 class="card-title">{{ ach.name }}</h3>
+          <div class="card-body">
+            <p>{{ ach.description }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Certifications Section -->
+    {% if certifications %}
+    <section id="certifications" class="section">
+      <h2 class="section-title">Certifications</h2>
+      <div class="card-grid">
+        {% for cert in certifications %}
+        <div class="card">
+          <h3 class="card-title">
+            {% if cert.url %}<a href="{{ cert.url }}">{{ cert.name }}</a>{% else %}{{ cert.name }}{% endif %}
+          </h3>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+  </main>
+
+  <footer>
+    <p>&copy; {{ current_year }} {{ name }}. Built for the Future.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/skills_chart.js"></script>
+</body>
 </html>
