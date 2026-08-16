@@ -3,82 +3,125 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ name }} - Portfolio</title>
+  <title>{{ name }} // AI & Systems Engineer</title>
   <meta name="description" content="{{ name }} - {{ summary }}">
   <meta name="author" content="{{ name }}">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Stylesheets -->
+  
+  <link rel="stylesheet" href="css/modern_normalize.css" />
+  <link rel="stylesheet" href="css/html5bp.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/intro_sequence.css">
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-brand">{{ name }}</div>
-    <ul class="nav-links">
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="/blog/" class="blog-link">Blog</a></li>
-    </ul>
+<div class="app-container">
+  
+  <!-- Left Navigation Rail -->
+  <nav class="nav-sidebar">
+    <div class="nav-brand">
+      <h1>{{ name }}</h1>
+      <span>SYS.OP // ACTIVE</span>
+    </div>
+    
+    <div class="nav-links">
+      <a href="#hero" class="nav-link">Home</a>
+      {% if work_experience %}<a href="#experience" class="nav-link">Experience</a>{% endif %}
+      {% if projects %}<a href="#projects" class="nav-link">Projects</a>{% endif %}
+      {% if achievements %}<a href="#achievements" class="nav-link">Achievements</a>{% endif %}
+      {% if certifications %}<a href="#certifications" class="nav-link">Certifications</a>{% endif %}
+      <a href="blog/index.html" class="nav-link">Blog</a>
+    </div>
+    
+    <div class="nav-footer">
+      <p>STATUS: ONLINE</p>
+      <p>LOC: {{ contact.location }}</p>
+    </div>
   </nav>
 
-  <!-- 2D Motion Graphics Header Sequence -->
-  <header class="stage" id="home">
-    <!-- Cinematic Intro Sequence -->
-    <div class="intro-scene">
-      <div class="intro-content">
-        <h1 class="intro-text-1">SYSTEM ONLINE.</h1>
-        <h2 class="intro-text-2">INITIALIZING AI PROTOCOLS...</h2>
-      </div>
-      <div class="intro-graphic"></div>
-    </div>
-
-    <!-- Final Hero State -->
-    <div class="hero-main">
-      <h1 style="font-size: clamp(3rem, 5vw, 5rem); margin-bottom: 1rem; text-align: center;">{{ name }}</h1>
-      <h2 style="font-size: clamp(1.2rem, 2vw, 2rem); color: var(--accent-blue); margin-bottom: 2rem;">{{ label }}</h2>
-      <p style="max-width: 600px; text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">{{ summary }}</p>
+  <!-- Main Scrolling Content -->
+  <main class="main-content">
+    
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <!-- Background Canvas for Particle Effect (Optional script needed later) -->
+      <canvas id="hero-canvas" style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:1; opacity: 0.15;"></canvas>
       
-      {% if social_links %}
-        <div style="display: flex; gap: 1rem;">
+      <div class="hero-content">
+        <span class="sys-init">SYS.INIT // USER_AUTHENTICATED</span>
+        <h1 class="hero-title">{{ name }}</h1>
+        <h2 style="border:none; margin:0; padding:0; font-size:1.5rem; color:var(--accent-color); margin-bottom:var(--spacing-md);">{{ label }}</h2>
+        <p class="hero-summary">{{ summary }}</p>
+        
+        <div class="hero-links">
+          {% if contact.email %}
+            <a href="mailto:{{ contact.email }}" class="btn-primary">INIT_CONTACT</a>
+          {% endif %}
           {% for link in social_links %}
-            <a href="{{ link.url }}" target="_blank" style="padding: 0.5rem 1rem; border: 1px solid var(--card-border); border-radius: 8px; background: var(--card-bg); display: flex; align-items: center; gap: 0.5rem;">
-              {{ link.label }}
-            </a>
+            <a href="{{ link.url }}" class="btn-primary" target="_blank" rel="noopener">{{ link.label }}</a>
           {% endfor %}
         </div>
-      {% endif %}
-    </div>
-  </header>
+      </div>
+    </section>
 
-  <main class="container">
-    
-    <!-- Experience Section (Timeline) -->
+    <!-- Experience Section -->
     {% if work_experience %}
-    <section id="experience" class="section">
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline">
+    <section id="experience" class="section-block">
+      <h2>// EXECUTION_LOG: EXPERIENCE</h2>
+      
+      <div class="data-list">
         {% for job in work_experience %}
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">{{ job.start_date }} - {{ job.end_date }}</span>
-            <h3 class="timeline-title">{{ job.position }} @ {% if job.url %}<a href="{{ job.url }}">{{ job.company }}</a>{% else %}{{ job.company }}{% endif %}</h3>
-            <div class="timeline-desc">
-              <p>{{ job.summary }}</p>
-              {% if job.highlights %}
-                <ul>
-                  {% for hl in job.highlights %}<li>{{ hl }}</li>{% endfor %}
-                </ul>
+        <div class="data-card">
+          <div class="data-card-header">
+            <div>
+              <h3 class="data-card-title">{{ job.position }}</h3>
+              <p class="data-card-subtitle">@ {{ job.company }}</p>
+            </div>
+            <div class="data-card-meta">
+              {{ job.start_date }} - {{ job.end_date }}
+            </div>
+          </div>
+          {% if job.summary %}<p>{{ job.summary }}</p>{% endif %}
+          {% if job.highlights %}
+          <ul>
+            {% for highlight in job.highlights %}<li>{{ highlight }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Skills Section -->
+    {% if skills %}
+    <section id="skills" class="section-block">
+      <h2>// SYSTEM_CAPABILITIES</h2>
+      <div class="skills-grid">
+        {% for skill in skills %}
+        <div class="skill-card">
+          <div class="skill-name">> {{ skill.name }}</div>
+          <div class="skill-list">{{ skill.proficiency_label }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Projects Section -->
+    {% if projects %}
+    <section id="projects" class="section-block">
+      <h2>// ACTIVE_DEPLOYMENTS</h2>
+      <div class="projects-grid">
+        {% for project in projects %}
+        <div class="project-card">
+          <div class="project-image-placeholder">
+            <!-- Images will be added here later. Using placeholder style from CSS -->
+          </div>
+          <div class="project-content">
+            <h3>{{ project.title }}</h3>
+            {% if project.summary %}<p>{{ project.summary }}</p>{% endif %}
+            <div class="project-links">
+              {% if project.url %}
+                <a href="{{ project.url }}" class="btn-primary" target="_blank">VIEW_SOURCE</a>
               {% endif %}
             </div>
           </div>
@@ -88,56 +131,15 @@
     </section>
     {% endif %}
 
-    <!-- Skills Section (Animated Chart) -->
-    <section id="skills" class="section">
-      <h2 class="section-title">Technical Proficiency</h2>
-      <div class="skills-container">
-        <canvas id="skillsChart"></canvas>
-      </div>
-    </section>
-
-    <!-- Projects Section (Cards + SVG Diagram) -->
-    {% if projects %}
-    <section id="projects" class="section">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="card-grid">
-        {% for project in projects %}
-        <div class="card">
-          <h3 class="card-title">
-            {% if project.url %}<a href="{{ project.url }}">{{ project.title }}</a>{% else %}{{ project.title }}{% endif %}
-          </h3>
-          <div class="card-body">
-            <p>{{ project.summary }}</p>
-            {% if project.highlights %}
-              <ul>
-                {% for hl in project.highlights %}<li>{{ hl }}</li>{% endfor %}
-              </ul>
-            {% endif %}
-            
-            <!-- Specific injection for MindX AI SVG Architecture -->
-            {% if "MindX" in project.title %}
-            <div class="card-svg-wrapper">
-              <img src="img/architecture_diagram.svg" alt="MindX AI Architecture" style="width:100%; height:auto; display:block;">
-            </div>
-            {% endif %}
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </section>
-    {% endif %}
-
     <!-- Achievements Section -->
     {% if achievements %}
-    <section id="achievements" class="section">
-      <h2 class="section-title">Achievements</h2>
-      <div class="card-grid">
-        {% for ach in achievements %}
-        <div class="card">
-          <h3 class="card-title">{{ ach.name }}</h3>
-          <div class="card-body">
-            <p>{{ ach.description }}</p>
-          </div>
+    <section id="achievements" class="section-block">
+      <h2>// ACHIEVEMENTS</h2>
+      <div class="data-list">
+        {% for achievement in achievements %}
+        <div class="data-card">
+          <h3 class="data-card-title">{{ achievement.name }}</h3>
+          {% if achievement.description %}<p class="data-card-subtitle" style="margin-top:var(--spacing-sm);">{{ achievement.description }}</p>{% endif %}
         </div>
         {% endfor %}
       </div>
@@ -146,28 +148,60 @@
 
     <!-- Certifications Section -->
     {% if certifications %}
-    <section id="certifications" class="section">
-      <h2 class="section-title">Certifications</h2>
-      <div class="card-grid">
+    <section id="certifications" class="section-block">
+      <h2>// CERTIFICATIONS</h2>
+      <div class="data-list">
         {% for cert in certifications %}
-        <div class="card">
-          <h3 class="card-title">
-            {% if cert.url %}<a href="{{ cert.url }}">{{ cert.name }}</a>{% else %}{{ cert.name }}{% endif %}
-          </h3>
+        <div class="data-card">
+          <h3 class="data-card-title">{{ cert.name }}</h3>
+          {% if cert.url %}
+          <div style="margin-top:var(--spacing-sm);">
+            <a href="{{ cert.url }}" class="btn-primary" target="_blank">VERIFY_CREDENTIAL</a>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+    
+    <!-- Education Section -->
+    {% if education %}
+    <section id="education" class="section-block">
+      <h2>// EDUCATION_LOG</h2>
+      <div class="data-list">
+        {% for edu in education %}
+        <div class="data-card">
+          <div class="data-card-header">
+            <div>
+              <h3 class="data-card-title">{{ edu.institution }}</h3>
+              {% for deg in edu.degrees %}
+                <p class="data-card-subtitle">{{ deg }}</p>
+              {% endfor %}
+            </div>
+            <div class="data-card-meta">
+              {{ edu.graduation_date }}<br>
+              {{ edu.location }}
+            </div>
+          </div>
         </div>
         {% endfor %}
       </div>
     </section>
     {% endif %}
 
+    <!-- Footer -->
+    <footer class="section-block" style="text-align:center; padding-bottom:var(--spacing-xl); border-bottom:none;">
+      <p style="color:var(--text-secondary); font-size:0.85rem;">
+        > SESSION_TERMINATED.<br>
+        © {{ current_year }} {{ name }}. ALL RIGHTS RESERVED.
+      </p>
+    </footer>
+
   </main>
+</div>
 
-  <footer>
-    <p>&copy; {{ current_year }} {{ name }}. Built for the Future.</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="js/skills_chart.js"></script>
+<!-- Scripts -->
+<!-- Optional: Add a simple particle system for the hero later -->
 </body>
 </html>

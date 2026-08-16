@@ -3,144 +3,159 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ramnarayan Maurya - Portfolio</title>
+  <title>Ramnarayan Maurya // AI & Systems Engineer</title>
   <meta name="description" content="Ramnarayan Maurya - Computer Engineering student specializing in A.I. &amp; M.L. with experience in full-stack development, GenAI, cloud computing, and multi-agent AI systems.">
   <meta name="author" content="Ramnarayan Maurya">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Stylesheets -->
+  
+  <link rel="stylesheet" href="css/modern_normalize.css" />
+  <link rel="stylesheet" href="css/html5bp.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/intro_sequence.css">
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-brand">Ramnarayan Maurya</div>
-    <ul class="nav-links">
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="/blog/" class="blog-link">Blog</a></li>
-    </ul>
+<div class="app-container">
+  
+  <!-- Left Navigation Rail -->
+  <nav class="nav-sidebar">
+    <div class="nav-brand">
+      <h1>Ramnarayan Maurya</h1>
+      <span>SYS.OP // ACTIVE</span>
+    </div>
+    
+    <div class="nav-links">
+      <a href="#hero" class="nav-link">Home</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#achievements" class="nav-link">Achievements</a>
+      <a href="#certifications" class="nav-link">Certifications</a>
+      <a href="blog/index.html" class="nav-link">Blog</a>
+    </div>
+    
+    <div class="nav-footer">
+      <p>STATUS: ONLINE</p>
+      <p>LOC: Mumbai, IND</p>
+    </div>
   </nav>
 
-  <!-- 2D Motion Graphics Header Sequence -->
-  <header class="stage" id="home">
-    <!-- Cinematic Intro Sequence -->
-    <div class="intro-scene">
-      <div class="intro-content">
-        <h1 class="intro-text-1">SYSTEM ONLINE.</h1>
-        <h2 class="intro-text-2">INITIALIZING AI PROTOCOLS...</h2>
-      </div>
-      <div class="intro-graphic"></div>
-    </div>
-
-    <!-- Final Hero State -->
-    <div class="hero-main">
-      <h1 style="font-size: clamp(3rem, 5vw, 5rem); margin-bottom: 1rem; text-align: center;">Ramnarayan Maurya</h1>
-      <h2 style="font-size: clamp(1.2rem, 2vw, 2rem); color: var(--accent-blue); margin-bottom: 2rem;">Computer Engineering in A.I. &amp; M.L.</h2>
-      <p style="max-width: 600px; text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Computer Engineering student specializing in A.I. &amp; M.L. with experience in full-stack development, GenAI, cloud computing, and multi-agent AI systems.</p>
+  <!-- Main Scrolling Content -->
+  <main class="main-content">
+    
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <!-- Background Canvas for Particle Effect (Optional script needed later) -->
+      <canvas id="hero-canvas" style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:1; opacity: 0.15;"></canvas>
       
-      
-        <div style="display: flex; gap: 1rem;">
+      <div class="hero-content">
+        <span class="sys-init">SYS.INIT // USER_AUTHENTICATED</span>
+        <h1 class="hero-title">Ramnarayan Maurya</h1>
+        <h2 style="border:none; margin:0; padding:0; font-size:1.5rem; color:var(--accent-color); margin-bottom:var(--spacing-md);">Computer Engineering in A.I. &amp; M.L.</h2>
+        <p class="hero-summary">Computer Engineering student specializing in A.I. &amp; M.L. with experience in full-stack development, GenAI, cloud computing, and multi-agent AI systems.</p>
+        
+        <div class="hero-links">
           
-            <a href="https://www.linkedin.com/in/byramnarayan/" target="_blank" style="padding: 0.5rem 1rem; border: 1px solid var(--card-border); border-radius: 8px; background: var(--card-bg); display: flex; align-items: center; gap: 0.5rem;">
-              LinkedIn
-            </a>
+            <a href="mailto:byramnarayan@gmail.com" class="btn-primary">INIT_CONTACT</a>
           
-            <a href="https://github.com/byramnarayan" target="_blank" style="padding: 0.5rem 1rem; border: 1px solid var(--card-border); border-radius: 8px; background: var(--card-bg); display: flex; align-items: center; gap: 0.5rem;">
-              GitHub
-            </a>
+          
+            <a href="https://www.linkedin.com/in/byramnarayan/" class="btn-primary" target="_blank" rel="noopener">LinkedIn</a>
+          
+            <a href="https://github.com/byramnarayan" class="btn-primary" target="_blank" rel="noopener">GitHub</a>
           
         </div>
-      
-    </div>
-  </header>
+      </div>
+    </section>
 
-  <main class="container">
+    <!-- Experience Section -->
     
-    <!-- Experience Section (Timeline) -->
-    
-    <section id="experience" class="section">
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline">
+    <section id="experience" class="section-block">
+      <h2>// EXECUTION_LOG: EXPERIENCE</h2>
+      
+      <div class="data-list">
         
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">Oct 2025 - Present</span>
-            <h3 class="timeline-title">Leadership Fellow @ ASPIRE INSTITUTE</h3>
-            <div class="timeline-desc">
-              <p>Fellowship from Harvard faculty and Ivy League educators, focusing on AI, global action, and community challenges.</p>
-              
-                <ul>
-                  <li>Develop 5 key GenAI leadership skills (Agility, Negotiation, Values-Based Leadership, etc.) and principles for managing AI-driven digital transformation.</li><li>Develop Prototype in GenAI to Help Community to address their Problems with anonymous Support.</li><li>Engaged in 2 dedicated Catch-up/Feedback weeks and multiple peer sessions, reinforcing skills in team dynamics and cross-cultural communication.</li><li>Engaged in live learning and discussions within a global cohort of 7,000+ peers and mentors to master cross-cultural collaboration.</li>
-                </ul>
-              
+        <div class="data-card">
+          <div class="data-card-header">
+            <div>
+              <h3 class="data-card-title">Leadership Fellow</h3>
+              <p class="data-card-subtitle">@ ASPIRE INSTITUTE</p>
+            </div>
+            <div class="data-card-meta">
+              Oct 2025 - Present
             </div>
           </div>
+          <p>Fellowship from Harvard faculty and Ivy League educators, focusing on AI, global action, and community challenges.</p>
+          
+          <ul>
+            <li>Develop 5 key GenAI leadership skills (Agility, Negotiation, Values-Based Leadership, etc.) and principles for managing AI-driven digital transformation.</li><li>Develop Prototype in GenAI to Help Community to address their Problems with anonymous Support.</li><li>Engaged in 2 dedicated Catch-up/Feedback weeks and multiple peer sessions, reinforcing skills in team dynamics and cross-cultural communication.</li><li>Engaged in live learning and discussions within a global cohort of 7,000+ peers and mentors to master cross-cultural collaboration.</li>
+          </ul>
+          
         </div>
         
       </div>
     </section>
     
 
-    <!-- Skills Section (Animated Chart) -->
-    <section id="skills" class="section">
-      <h2 class="section-title">Technical Proficiency</h2>
-      <div class="skills-container">
-        <canvas id="skillsChart"></canvas>
+    <!-- Skills Section -->
+    
+    <section id="skills" class="section-block">
+      <h2>// SYSTEM_CAPABILITIES</h2>
+      <div class="skills-grid">
+        
+        <div class="skill-card">
+          <div class="skill-name">> Programming Languages</div>
+          <div class="skill-list">Python, C Programming, JavaScript, SQL</div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-name">> Cloud Technologies</div>
+          <div class="skill-list">AWS IAM, EC2, S3, RDS</div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-name">> GenAI &amp; ML</div>
+          <div class="skill-list">Langchain, Google ADK, Langraph, Neo4j, mem0, HuggingFace</div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-name">> Frameworks &amp; Tools</div>
+          <div class="skill-list">FastAPI, Tailwind CSS, Basic React JS, AWS, Git, Docker</div>
+        </div>
+        
       </div>
     </section>
-
-    <!-- Projects Section (Cards + SVG Diagram) -->
     
-    <section id="projects" class="section">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="card-grid">
+
+    <!-- Projects Section -->
+    
+    <section id="projects" class="section-block">
+      <h2>// ACTIVE_DEPLOYMENTS</h2>
+      <div class="projects-grid">
         
-        <div class="card">
-          <h3 class="card-title">
-            <a href="https://youtu.be/gOBz5JPe_7c">AgriAssist</a>
-          </h3>
-          <div class="card-body">
+        <div class="project-card">
+          <div class="project-image-placeholder">
+            <!-- Images will be added here later. Using placeholder style from CSS -->
+          </div>
+          <div class="project-content">
+            <h3>AgriAssist</h3>
             <p>National Level Hackathon Winner Project With Working Prototype</p>
-            
-              <ul>
-                <li>Developed and deployed a full-stack AgriAssist application using FastAPI + PostgreSQL + Neo4j, reducing end-to-end farm recommendation latency by 40% and improving user onboarding retention by 15%.</li><li>Contributed on building ML vision and recommendation pipelines (YOLOv8 model + agent-based crop advice modules), enabling automated plant health detection and personalized crop suggestions for farmers with accuracy in disease/deficiency alerts in 5Km Range.</li><li>Built backend microservices and blockchain integration for carbon credits and verification, supporting 3 data sources (relational, graph, AI) and improving data sync reliability to 99.5% availability in production environments.</li>
-              </ul>
-            
-            
-            <!-- Specific injection for MindX AI SVG Architecture -->
-            
+            <div class="project-links">
+              
+                <a href="https://youtu.be/gOBz5JPe_7c" class="btn-primary" target="_blank">VIEW_SOURCE</a>
+              
+            </div>
           </div>
         </div>
         
-        <div class="card">
-          <h3 class="card-title">
-            <a href="https://youtu.be/RNewzoHub1A?si=g8nsM51rPOCpuZnU">MindX AI</a>
-          </h3>
-          <div class="card-body">
+        <div class="project-card">
+          <div class="project-image-placeholder">
+            <!-- Images will be added here later. Using placeholder style from CSS -->
+          </div>
+          <div class="project-content">
+            <h3>MindX AI</h3>
             <p>HIPAA-compliant multi-agent AI system for mental health support.</p>
-            
-              <ul>
-                <li>Engineered HIPAA-compliant Firebase backend with data anonymization enabling institutional analytics while maintaining complete user privacy.</li><li>Built multi-agent AI system using Neo4J Knowledge Graph for culturally-aware mental health support with clinical risk assessment (PHQ-9/GAD-7).</li><li>Deployed and monitored the entire code base on Google cloud run.</li>
-              </ul>
-            
-            
-            <!-- Specific injection for MindX AI SVG Architecture -->
-            
-            <div class="card-svg-wrapper">
-              <img src="img/architecture_diagram.svg" alt="MindX AI Architecture" style="width:100%; height:auto; display:block;">
+            <div class="project-links">
+              
+                <a href="https://youtu.be/RNewzoHub1A?si=g8nsM51rPOCpuZnU" class="btn-primary" target="_blank">VIEW_SOURCE</a>
+              
             </div>
-            
           </div>
         </div>
         
@@ -150,29 +165,23 @@
 
     <!-- Achievements Section -->
     
-    <section id="achievements" class="section">
-      <h2 class="section-title">Achievements</h2>
-      <div class="card-grid">
+    <section id="achievements" class="section-block">
+      <h2>// ACHIEVEMENTS</h2>
+      <div class="data-list">
         
-        <div class="card">
-          <h3 class="card-title">National Level HackOverflow 4.0 Hackathon 2026</h3>
-          <div class="card-body">
-            <p>1st Runner Up - Win 25000Rs</p>
-          </div>
+        <div class="data-card">
+          <h3 class="data-card-title">National Level HackOverflow 4.0 Hackathon 2026</h3>
+          <p class="data-card-subtitle" style="margin-top:var(--spacing-sm);">1st Runner Up - Win 25000Rs</p>
         </div>
         
-        <div class="card">
-          <h3 class="card-title">National Level Project Exhibition Cum Competition: Tantravihar 9.0</h3>
-          <div class="card-body">
-            <p>1st Runner Up - Win 5000Rs</p>
-          </div>
+        <div class="data-card">
+          <h3 class="data-card-title">National Level Project Exhibition Cum Competition: Tantravihar 9.0</h3>
+          <p class="data-card-subtitle" style="margin-top:var(--spacing-sm);">1st Runner Up - Win 5000Rs</p>
         </div>
         
-        <div class="card">
-          <h3 class="card-title">Global Digital Health Society Hackathon 2025</h3>
-          <div class="card-body">
-            <p>Qualifier of Round 1</p>
-          </div>
+        <div class="data-card">
+          <h3 class="data-card-title">Global Digital Health Society Hackathon 2025</h3>
+          <p class="data-card-subtitle" style="margin-top:var(--spacing-sm);">Qualifier of Round 1</p>
         </div>
         
       </div>
@@ -181,28 +190,60 @@
 
     <!-- Certifications Section -->
     
-    <section id="certifications" class="section">
-      <h2 class="section-title">Certifications</h2>
-      <div class="card-grid">
+    <section id="certifications" class="section-block">
+      <h2>// CERTIFICATIONS</h2>
+      <div class="data-list">
         
-        <div class="card">
-          <h3 class="card-title">
-            <a href="Credly Credential">AWS Academy Graduate - Cloud Foundations</a>
-          </h3>
+        <div class="data-card">
+          <h3 class="data-card-title">AWS Academy Graduate - Cloud Foundations</h3>
+          
+          <div style="margin-top:var(--spacing-sm);">
+            <a href="Credly Credential" class="btn-primary" target="_blank">VERIFY_CREDENTIAL</a>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+    
+    
+    <!-- Education Section -->
+    
+    <section id="education" class="section-block">
+      <h2>// EDUCATION_LOG</h2>
+      <div class="data-list">
+        
+        <div class="data-card">
+          <div class="data-card-header">
+            <div>
+              <h3 class="data-card-title">UNIVERSITY OF MUMBAI [ A. P. Shah Institute of Technology, Thane ]</h3>
+              
+                <p class="data-card-subtitle">Bachelor of Engineering in Computer Engineering in A.I. &amp; M.L.</p>
+              
+            </div>
+            <div class="data-card-meta">
+              Apr 2027<br>
+              Mumbai, INDIA
+            </div>
+          </div>
         </div>
         
       </div>
     </section>
     
 
+    <!-- Footer -->
+    <footer class="section-block" style="text-align:center; padding-bottom:var(--spacing-xl); border-bottom:none;">
+      <p style="color:var(--text-secondary); font-size:0.85rem;">
+        > SESSION_TERMINATED.<br>
+        © 2026 Ramnarayan Maurya. ALL RIGHTS RESERVED.
+      </p>
+    </footer>
+
   </main>
+</div>
 
-  <footer>
-    <p>&copy; 2026 Ramnarayan Maurya. Built for the Future.</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="js/skills_chart.js"></script>
+<!-- Scripts -->
+<!-- Optional: Add a simple particle system for the hero later -->
 </body>
 </html>

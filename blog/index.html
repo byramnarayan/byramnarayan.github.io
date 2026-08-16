@@ -2,17 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Blog - {data['name']}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LOG_ARCHIVE // BLOG</title>
+  
+  <link rel="stylesheet" href="../css/modern_normalize.css" />
+  <link rel="stylesheet" href="../css/html5bp.css">
   <link rel="stylesheet" href="../css/main.css">
-  <style>
-    body { display: flex; justify-content: center; align-items: center; height: 100vh; }
-    h1 { color: var(--accent-blue); }
-  </style>
 </head>
 <body>
-  <div style="text-align: center;">
-    <h1>Blog Coming Soon</h1>
-    <a href="../index.html">← Back to Portfolio</a>
-  </div>
+
+<div class="app-container">
+  
+  <!-- Left Navigation Rail -->
+  <nav class="nav-sidebar">
+    <div class="nav-brand">
+      <h1>LOG_ARCHIVE</h1>
+      <span>SYS.OP // BLOG</span>
+    </div>
+    
+    <div class="nav-links">
+      <a href="../index.html" class="nav-link"><< RETURN_TO_ROOT</a>
+      <a href="#" class="nav-link active">Blog</a>
+    </div>
+    
+    <div class="nav-footer">
+      <p>STATUS: ONLINE</p>
+    </div>
+  </nav>
+
+  <!-- Main Scrolling Content -->
+  <main class="main-content">
+    
+    <section class="section-block" style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center;">
+      <div class="data-card" style="text-align: center; padding: var(--spacing-xl);">
+        <h2 style="border: none; margin-bottom: var(--spacing-md); font-size: 2rem;">// NO_DATA_FOUND</h2>
+        <p style="color: var(--text-secondary);">The log archive is currently empty. Entries will be appended soon.</p>
+        <div style="margin-top: var(--spacing-lg);">
+          <a href="../index.html" class="btn-primary">INIT_RETURN_SEQUENCE</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
 </body>
 </html>
