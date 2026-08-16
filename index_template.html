@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="css/modern_normalize.css" />
     <link rel="stylesheet" href="css/html5bp.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/scroll.css">
 
     <!-- Set a theme color that matches your website's primary color -->
     <meta name="theme-color" content="#fafafa">
@@ -52,19 +53,27 @@
 
     <!-- Content Security Policy: Uncomment to enhance security by restricting where content can be loaded from (useful for preventing certain attacks like XSS). Update if adding external sources (e.g., Google Fonts, Bootstrap CDN, analytics, etc). -->
     <!-- <meta http-equiv="Content-Security-Policy" content=" default-src 'self'; script-src 'self' code.jquery.com; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com; img-src 'self' images.examplecdn.com; "> -->
+    <style>
+      .page-header {
+        color: #141414;
+      }
+      .page-header h1, .page-header h2, .page-header p, .page-header a, .page-header .header-label {
+        color: #141414 !important;
+      }
+      .page-header a:hover {
+        color: #000 !important;
+      }
+      .page-header .header-image {
+        border-color: #141414;
+      }
+    </style>
   </head>
 
   <body>
     <header class="page-header">
       <div class="container">
         <div class="header-top flex-responsive">
-          {% if image_path %}
-            <img class="header-image"
-                 width="256"
-                 height="256"
-                 src="{{ image_path }}"
-                 alt="{{ name }} Profile Image" />
-          {% endif %}
+
           <div class="header-info">
             <h1>{{ name }}</h1>
             {% if label %}<h2 class="header-label">{{ label }}</h2>{% endif %}
@@ -106,216 +115,264 @@
       </div>
     </header>
 
-    <div class="page-content">
-      <div class="container">
-        <main>
+    <div class="hero-pinned-section">
+      <div class="hero-img"></div>
+      <div class="hero-mask"></div>
+      <div class="hero-grid-overlay">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkwMiIgaGVpZ2h0PSIxMTExIiB2aWV3Qm94PSIwIDAgMTkwMiAxMTExIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB4PSI3OTIuNjY2IiB5PSIxNTkuMzM0IiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSI3OTEuNjY3IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iNjM0LjMzNCIgeT0iMTU5LjMzNCIgd2lkdGg9IjE1OC4zMzMiIGhlaWdodD0iOTUwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iNDc2IiB5PSIxIiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSI5NTAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8cmVjdCB4PSIzMTcuNjY2IiB5PSIxNTkuMzM0IiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSI5NTAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8cmVjdCB4PSIxNTkuMzM0IiB5PSIxIiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSIxMTA4LjMzIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iOTUxIiB5PSIxIiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSI5NTAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8cmVjdCB4PSIxMTA5LjMzIiB5PSIxIiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSIxMTA4LjMzIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iMTI2Ny42NyIgeT0iMTU5LjMzNCIgd2lkdGg9IjE1OC4zMzMiIGhlaWdodD0iOTUwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iMTQyNiIgeT0iMSIgd2lkdGg9IjE1OC4zMzMiIGhlaWdodD0iOTUwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iMTU4NC4zMyIgeT0iMSIgd2lkdGg9IjE1OC4zMzMiIGhlaWdodD0iMTEwOC4zMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxyZWN0IHg9IjEiIHk9IjMxNy42NjYiIHdpZHRoPSIxNTguMzMzIiBoZWlnaHQ9IjE5MDAiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxIDMxNy42NjYpIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iMTU5LjMzNCIgeT0iNDc2IiB3aWR0aD0iMTU4LjMzMyIgaGVpZ2h0PSIxNzQxLjY3IiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMTU5LjMzNCA0NzYpIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3QgeD0iMSIgeT0iNzkyLjY2NiIgd2lkdGg9IjE1OC4zMzMiIGhlaWdodD0iMTc0MS42NyIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDEgNzkyLjY2NikiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8cmVjdCB4PSIxIiB5PSI5NTEiIHdpZHRoPSIxNTguMzMzIiBoZWlnaHQ9IjE5MDAiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxIDk1MSkiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K" alt="" />
+      </div>
+
+      <div class="marker marker-1">
+        <span class="marker-icon"></span>
+        <p class="marker-label">Experience</p>
+      </div>
+
+      <div class="marker marker-2">
+        <span class="marker-icon"></span>
+        <p class="marker-label">Skills</p>
+      </div>
+
+      <div class="hero-content">
           {% if work_experience %}
-            <section>
-              <h2 class="section-heading">Work Experience</h2>
-              {% for job in work_experience %}
-                <section>
-                  <h3>
-                    {% if job.url %}
-                      {{ job.position }} at <a href="{{ job.url }}">{{ job.company }}</a>
-                    {% else %}
-                      {{ job.position }} at {{ job.company }}
+            <div class="hero-content-block">
+              <div class="hero-content-copy">
+                <h2 class="section-heading">Work Experience</h2>
+                {% for job in work_experience %}
+                  <section>
+                    <h3>
+                      {% if job.url %}
+                        {{ job.position }} at <a href="{{ job.url }}">{{ job.company }}</a>
+                      {% else %}
+                        {{ job.position }} at {{ job.company }}
+                      {% endif %}
+                    </h3>
+                    {% if job.start_date and job.end_date %}
+                      <p class="section-label">{{ job.start_date }} - {{ job.end_date }}</p>
                     {% endif %}
-                  </h3>
-                  {% if job.start_date and job.end_date %}
-                    <p class="section-label">{{ job.start_date }} - {{ job.end_date }}</p>
-                  {% endif %}
-                  {% if job.summary %}<p>{{ job.summary }}</p>{% endif %}
-                  {% if job.highlights %}
-                    <ul>
-                      {% for highlight in job.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
+                    {% if job.summary %}<p>{{ job.summary }}</p>{% endif %}
+                    {% if job.highlights %}
+                      <ul>
+                        {% for highlight in job.highlights %}<li>{{ highlight }}</li>{% endfor %}
+                      </ul>
+                    {% endif %}
+                  </section>
+                {% endfor %}
+              </div>
+            </div>
           {% endif %}
 
           {% if projects %}
-            <section>
-              <h2 class="section-heading">Projects</h2>
-              {% for project in projects %}
-                <section>
-                  <h3>
-                    {% if project.url %}
-                      <a href="{{ project.url }}">{{ project.title }}</a>
-                    {% else %}
-                      {{ project.title }}
+            <div class="hero-content-block">
+              <div class="hero-content-copy">
+                <h2 class="section-heading">Projects</h2>
+                <div class="projects-grid">
+                {% for project in projects %}
+                  <section class="card">
+                    <h3>
+                      {% if project.url %}
+                        <a href="{{ project.url }}">{{ project.title }}</a>
+                      {% else %}
+                        {{ project.title }}
+                      {% endif %}
+                    </h3>
+                    {% if project.summary %}<p>{{ project.summary }}</p>{% endif %}
+                    {% if project.highlights %}
+                      <ul>
+                        {% for highlight in project.highlights %}<li>{{ highlight }}</li>{% endfor %}
+                      </ul>
                     {% endif %}
-                  </h3>
-                  {% if project.summary %}<p>{{ project.summary }}</p>{% endif %}
-                  {% if project.highlights %}
-                    <ul>
-                      {% for highlight in project.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                  {% if project.images %}
-                    <div class="gallery main-gallery">
-                      {% for img in project.images %}
-                        <figure>
-                          <img width="600"
-                               height="338"
-                               src="{{ img.img_path }}"
-                               alt="{{ img.caption }}">
-                          <figcaption>{{ img.caption }}</figcaption>
-                        </figure>
-                      {% endfor %}
-                    </div>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
-          {% endif %}
-
-          {% if volunteer_experience %}
-            <section>
-              <h2 class="section-heading">Volunteer Experience</h2>
-              {% for vol in volunteer_experience %}
-                <section>
-                  <h3>
-                    {% if vol.url %}
-                      {{ vol.position }} at <a href="{{ vol.url }}">{{ vol.organization }}</a>
-                    {% else %}
-                      {{ vol.position }} at {{ vol.organization }}
+                    {% if project.images %}
+                      <div class="gallery main-gallery">
+                        {% for img in project.images %}
+                          <figure>
+                            <img width="600"
+                                 height="338"
+                                 src="{{ img.img_path }}"
+                                 alt="{{ img.caption }}">
+                            <figcaption>{{ img.caption }}</figcaption>
+                          </figure>
+                        {% endfor %}
+                      </div>
                     {% endif %}
-                  </h3>
-                  {% if vol.start_date and vol.end_date %}
-                    <p class="section-label">{{ vol.start_date }} - {{ vol.end_date }}</p>
-                  {% endif %}
-                  {% if vol.summary %}<p>{{ vol.summary }}</p>{% endif %}
-                  {% if vol.highlights %}
-                    <ul>
-                      {% for highlight in vol.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
+                  </section>
+                {% endfor %}
+                </div>
+              </div>
+            </div>
           {% endif %}
 
-          {% if references %}
-            <section>
-              <h2 class="section-heading">References</h2>
-              {% for ref in references %}
-                <section>
-                  {% if ref.name %}<h3>{{ ref.name }}</h3>{% endif %}
-                  {% if ref.relation %}<p class="section-label">{{ ref.relation }}</p>{% endif %}
-                  {% if ref.reference %}
-                    <blockquote>
-                      {{ ref.reference }}
-                    </blockquote>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
+          {% if certifications %}
+            <div class="hero-content-block">
+              <div class="hero-content-copy">
+                <h2 class="section-heading">Certifications</h2>
+                <div class="badge-container">
+                  {% for cert in certifications %}
+                    {% if cert.url %}
+                      <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer" class="badge">{{ cert.name }}</a>
+                    {% else %}
+                      <span class="badge">{{ cert.name }}</span>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
           {% endif %}
-        </main>
 
-        <!-- Sidebar Section -->
-        <aside>
           {% if education %}
-            <section>
-              <h2 class="section-heading">Education</h2>
-              {% for edu in education %}
-                <section>
-                  <h3>
-                    {% if edu.url %}
-                      <a href="{{ edu.url }}">{{ edu.institution }}</a>
-                    {% else %}
-                      {{ edu.institution }}
+            <div class="hero-content-block">
+              <div class="hero-content-copy">
+                <h2 class="section-heading">Education</h2>
+                {% for edu in education %}
+                  <section>
+                    <h3>
+                      {% if edu.url %}
+                        <a href="{{ edu.url }}">{{ edu.institution }}</a>
+                      {% else %}
+                        {{ edu.institution }}
+                      {% endif %}
+                    </h3>
+                    {% if edu.location %}<p class="section-label">{{ edu.location }}</p>{% endif %}
+                    {% if edu.degrees %}
+                      <h4>Degrees</h4>
+                      <ul>
+                        {% for deg in edu.degrees %}<li>{{ deg }}</li>{% endfor %}
+                      </ul>
                     {% endif %}
-                  </h3>
-                  {% if edu.location %}<p class="section-label">{{ edu.location }}</p>{% endif %}
-                  {% if edu.degrees %}
-                    <h4>Degrees</h4>
-                    <ul>
-                      {% for deg in edu.degrees %}<li>{{ deg }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                  {% if edu.honors %}
-                    <h4>Honors</h4>
-                    <ul>
-                      {% for hon in edu.honors %}<li>{{ hon }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                  {% if edu.gpa_major or edu.gpa_cumulative or edu.graduation_date %}
-                    <p>
-                      {% if edu.gpa_major %}<span class="block">GPA in Major: {{ edu.gpa_major }}</span>{% endif %}
-                      {% if edu.gpa_cumulative %}<span class="block">Cumulative GPA: {{ edu.gpa_cumulative }}</span>{% endif %}
-                      {% if edu.graduation_date %}<span class="block">Graduation Date: {{ edu.graduation_date }}</span>{% endif %}
-                    </p>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
+                    {% if edu.honors %}
+                      <h4>Honors</h4>
+                      <ul>
+                        {% for hon in edu.honors %}<li>{{ hon }}</li>{% endfor %}
+                      </ul>
+                    {% endif %}
+                    {% if edu.gpa_major or edu.gpa_cumulative or edu.graduation_date %}
+                      <p>
+                        {% if edu.gpa_major %}<span class="block">GPA in Major: {{ edu.gpa_major }}</span>{% endif %}
+                        {% if edu.gpa_cumulative %}<span class="block">Cumulative GPA: {{ edu.gpa_cumulative }}</span>{% endif %}
+                        {% if edu.graduation_date %}<span class="block">Graduation Date: {{ edu.graduation_date }}</span>{% endif %}
+                      </p>
+                    {% endif %}
+                  </section>
+                {% endfor %}
+              </div>
+            </div>
           {% endif %}
 
           {% if skills %}
-            <section>
-              <h2 class="section-heading">Skills</h2>
-              <ul class="unstyled-list">
-                {% for skill in skills %}
-                  <li>
-                    <h3>{{ skill.name }}</h3>
-                    <div class="skill-bar">
-                      <div class="skill-bar-fill w-{{ skill.proficiency }}"
-                           role="meter"
-                           aria-valuenow="{{ skill.proficiency }}"
-                           aria-valuemin="0"
-                           aria-valuemax="100">
-                        <span class="skill-bar-label">{{ skill.proficiency_label }}</span>
+            <div class="hero-content-block">
+              <div class="hero-content-copy">
+                <h2 class="section-heading">Skills</h2>
+                <ul class="unstyled-list">
+                  {% for skill in skills %}
+                    <li>
+                      <h3>{{ skill.name }}</h3>
+                      <div class="skill-bar">
+                        <div class="skill-bar-fill w-{{ skill.proficiency }}"
+                             role="meter"
+                             aria-valuenow="{{ skill.proficiency }}"
+                             aria-valuemin="0"
+                             aria-valuemax="100">
+                          <span class="skill-bar-label">{{ skill.proficiency_label }}</span>
+                        </div>
                       </div>
-                    </div>
-                  </li>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if volunteer_experience %}
+            <div class="hero-content-block">
+              <div class="hero-content-copy">
+                <h2 class="section-heading">Volunteer Experience</h2>
+                {% for vol in volunteer_experience %}
+                  <section>
+                    <h3>
+                      {% if vol.url %}
+                        {{ vol.position }} at <a href="{{ vol.url }}">{{ vol.organization }}</a>
+                      {% else %}
+                        {{ vol.position }} at {{ vol.organization }}
+                      {% endif %}
+                    </h3>
+                    {% if vol.start_date and vol.end_date %}
+                      <p class="section-label">{{ vol.start_date }} - {{ vol.end_date }}</p>
+                    {% endif %}
+                    {% if vol.summary %}<p>{{ vol.summary }}</p>{% endif %}
+                    {% if vol.highlights %}
+                      <ul>
+                        {% for highlight in vol.highlights %}<li>{{ highlight }}</li>{% endfor %}
+                      </ul>
+                    {% endif %}
+                  </section>
                 {% endfor %}
-              </ul>
-            </section>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if references %}
+            <div class="hero-content-block">
+              <div class="hero-content-copy">
+                <h2 class="section-heading">References</h2>
+                {% for ref in references %}
+                  <section>
+                    {% if ref.name %}<h3>{{ ref.name }}</h3>{% endif %}
+                    {% if ref.relation %}<p class="section-label">{{ ref.relation }}</p>{% endif %}
+                    {% if ref.reference %}
+                      <blockquote>
+                        {{ ref.reference }}
+                      </blockquote>
+                    {% endif %}
+                  </section>
+                {% endfor %}
+              </div>
+            </div>
           {% endif %}
 
           {% if languages %}
-            <section>
-              <h2 class="section-heading">Languages</h2>
-              <ul class="unstyled-list">
-                {% for lang in languages %}
-                  <li>
-                    <h3>{{ lang.language }}</h3>
-                    <p class="section-label">{{ lang.fluency }}</p>
-                  </li>
-                {% endfor %}
-              </ul>
-            </section>
+            <div class="hero-content-block">
+              <div class="hero-content-copy">
+                <h2 class="section-heading">Languages</h2>
+                <ul class="unstyled-list">
+                  {% for lang in languages %}
+                    <li>
+                      <h3>{{ lang.language }}</h3>
+                      <p class="section-label">{{ lang.fluency }}</p>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
           {% endif %}
 
           {% if interests %}
-            <section>
-              <h2 class="section-heading">Interests</h2>
-              {% for interest in interests %}
-                <section>
-                  <h3>{{ interest.name }}</h3>
-                  {% if interest.summary %}<p>{{ interest.summary }}</p>{% endif %}
-                  {% if interest.images %}
-                    <div class="gallery side-gallery">
-                      {% for img in interest.images %}
-                        <figure>
-                          <img width="600"
-                               height="338"
-                               src="{{ img.img_path }}"
-                               alt="{{ img.caption }}">
-                          <figcaption>{{ img.caption }}</figcaption>
-                        </figure>
-                      {% endfor %}
-                    </div>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
+            <div class="hero-content-block">
+              <div class="hero-content-copy">
+                <h2 class="section-heading">Interests</h2>
+                {% for interest in interests %}
+                  <section>
+                    <h3>{{ interest.name }}</h3>
+                    {% if interest.summary %}<p>{{ interest.summary }}</p>{% endif %}
+                    {% if interest.images %}
+                      <div class="gallery side-gallery">
+                        {% for img in interest.images %}
+                          <figure>
+                            <img width="600"
+                                 height="338"
+                                 src="{{ img.img_path }}"
+                                 alt="{{ img.caption }}">
+                            <figcaption>{{ img.caption }}</figcaption>
+                          </figure>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </section>
+                {% endfor %}
+              </div>
+            </div>
           {% endif %}
-        </aside>
+
       </div>
+      <div class="hero-scroll-progress-bar"></div>
     </div>
 
     <footer class="page-footer">
@@ -324,6 +381,12 @@
       </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/water_effect.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
+    <script src="js/scroll_effect.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
