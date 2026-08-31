@@ -39,6 +39,16 @@
   ],
   "projects": [
     {
+      "title": "Graphical Heat Simulation Interface",
+      "summary": "Interactive heat simulation web application.",
+      "url": "https://byramnarayan.github.io/heat-simulation/",
+      "highlights": [
+        "Built using React and Vite with Tailwind CSS.",
+        "Interactive graphical interface for visualizing heat simulations."
+      ],
+      "images": []
+    },
+    {
       "title": "AgriAssist",
       "summary": "National Level Hackathon Winner Project With Working Prototype",
       "url": "https://youtu.be/gOBz5JPe_7c",
