@@ -4,183 +4,234 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Site Info -->
-    <title>{{ name }} - Resume</title>
-    <meta name="description" content="{{ name }} - {{ summary }}">
+    <!-- SEO -->
+    <title>{{ name }} — Résumé</title>
+    <meta name="description" content="{{ name }} — {{ summary }}">
     <meta name="author" content="{{ name }}">
 
-    <!-- Open Graph Tags: The title of the page for social media sharing. It can match the title tag or be more descriptive. -->
-    <meta property="og:title" content="{{ name }}">
-
-    <!-- Open Graph Tags: Typically set to "website" for static sites or "article" for content-heavy pages. -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ name }} — Résumé">
     <meta property="og:type" content="website">
-
-    <!-- Open Graph Tags: The URL of the page, used to ensure link previews resolve to the correct page. -->
     <meta property="og:url" content="{{ base_url }}/resume.html">
-
-    <!-- Open Graph Tags: URL of an image that represents the page. Useful for link previews. -->
     <meta property="og:image" content="{{ base_url }}/{{ image_path }}">
-
-    <!-- Open Graph Tags: Provides an alternative text for the image to improve accessibility. -->
     <meta property="og:image:alt" content="{{ name }} Profile Image">
 
-    <!-- Preconnect for Google Fonts -->
+    <!-- Fonts (matching kit) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Custom Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-          rel="stylesheet">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/modern_normalize.css" />
-    <link rel="stylesheet" href="css/html5bp.css">
-    <link rel="stylesheet" href="css/main.css">
+    <!-- Design system -->
+    <link rel="stylesheet" href="css/modern_normalize.css">
+    <link rel="stylesheet" href="css/kit.css">
     <link rel="stylesheet" href="css/resume.css">
 
-    <!-- Set a theme color that matches your website's primary color -->
-    <meta name="theme-color" content="#fafafa">
-
-    <!-- Favicon for all browsers -->
+    <meta name="theme-color" content="#08090d">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
-
-    <!-- Apple touch icon for iOS devices -->
     <link rel="apple-touch-icon" sizes="180x180" href="/icon.png">
-
-    <!-- Web app manifest for Progressive Web Apps -->
     <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Content Security Policy: Uncomment to enhance security by restricting where content can be loaded from (useful for preventing certain attacks like XSS). Update if adding external sources (e.g., Google Fonts, Bootstrap CDN, analytics, etc). -->
-    <!-- <meta http-equiv="Content-Security-Policy" content=" default-src 'self'; script-src 'self' code.jquery.com; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com; img-src 'self' images.examplecdn.com; "> -->
+    <!-- Anti-FOUC -->
+    <script>
+      (function(){
+        var t=localStorage.getItem('portfolio-theme');
+        if(!t) t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+        document.documentElement.classList.add('theme-'+t);
+      })();
+    </script>
   </head>
 
-  <body>
-    <header class="page-header">
-      <div class="container">
-        <div class="header-top flex-responsive">
-          <div class="header-info">
-            <h1>{{ name }}</h1>
-            {% if contact.email or contact.phone or contact.location %}
-              <address>
-                <ul class="inline-list flex-responsive">
-                  {% if contact.email %}
-                    <li>
-                      <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
-                    </li>
-                  {% endif %}
-                  {% if contact.phone %}
-                    <li>
-                      <a href="tel:+{{ contact.phone | replace('-', '') }}">{{ contact.phone }}</a>
-                    </li>
-                  {% endif %}
-                  {% if contact.location %}<li>{{ contact.location }}</li>{% endif %}
-                </ul>
-              </address>
-            {% endif %}
-            {% if summary %}<p class="header-summary">{{ summary }}</p>{% endif %}
-          </div>
-        </div>
+  <body class="resume-body">
+    <!-- Print / back nav (hidden in print) -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.5rem;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:.75rem;" class="no-print">
+      <a href="index.html" style="color:var(--muted-fg);text-decoration:none;" aria-label="Back to portfolio">← Portfolio</a>
+      <div style="display:flex;gap:.75rem;align-items:center;">
+        <button id="theme-toggle" aria-label="Toggle theme" style="background:transparent;border:1px solid var(--border);border-radius:2px;padding:.25rem .5rem;font-family:var(--font-mono);font-size:.6875rem;color:var(--muted-fg);cursor:pointer;">DARK</button>
+        <button onclick="window.print()" style="background:var(--accent);color:var(--accent-fg);border:none;border-radius:2px;padding:.375rem .75rem;font-family:var(--font-mono);font-size:.6875rem;cursor:pointer;font-weight:500;">PRINT / PDF</button>
       </div>
-    </header>
+    </div>
 
-    <div class="page-content">
-      <div class="container">
+    <div style="max-width:900px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+
+      <!-- ── Resume Header ─────────────────────────────────── -->
+      <header class="resume-header">
+        <h1 class="resume-name">{{ name }}</h1>
+        {% if label %}<p class="resume-label">{{ label }}</p>{% endif %}
+
+        <ul class="resume-contact" aria-label="Contact information">
+          {% if contact.email %}
+          <li><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>
+          {% endif %}
+          {% if contact.phone %}
+          <li><a href="tel:{{ contact.phone | replace(' ', '') | replace('-', '') }}">{{ contact.phone }}</a></li>
+          {% endif %}
+          {% if contact.location %}<li>{{ contact.location }}</li>{% endif %}
+          {% for link in social_links %}
+          <li><a href="{{ link.url }}" rel="noopener noreferrer">{{ link.label }}</a></li>
+          {% endfor %}
+        </ul>
+
+        {% if summary %}
+        <p class="resume-summary">{{ summary }}</p>
+        {% endif %}
+      </header>
+
+      <!-- ── Two-column layout ─────────────────────────────── -->
+      <div class="resume-layout">
+
+        <!-- MAIN COLUMN -->
         <main>
+          <!-- Work Experience -->
           {% if work_experience %}
-            <section>
-              <h2 class="section-heading">Work Experience</h2>
-              {% for job in work_experience %}
-                <section>
-                  <h3>
-                    {% if job.url %}
-                      {{ job.position }} at <a href="{{ job.url }}">{{ job.company }}</a>
-                    {% else %}
-                      {{ job.position }} at {{ job.company }}
-                    {% endif %}
-                  </h3>
-                  {% if job.start_date and job.end_date %}
-                    <p class="section-label">{{ job.start_date }} - {{ job.end_date }}</p>
-                  {% endif %}
-                  {% if job.summary %}<p>{{ job.summary }}</p>{% endif %}
-                  {% if job.highlights %}
-                    <ul>
-                      {% for highlight in job.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
+          <section class="resume-section" aria-labelledby="r-exp">
+            <h2 class="resume-section-heading" id="r-exp">Work Experience</h2>
+            {% for job in work_experience %}
+            <div class="resume-job {% if not loop.first %}resume-job{% endif %}">
+              <h3 class="resume-job-title">{{ job.position }}</h3>
+              <p class="resume-job-company">
+                {% if job.url %}<a href="{{ job.url }}" rel="noopener noreferrer">{{ job.company }}</a>{% else %}{{ job.company }}{% endif %}
+              </p>
+              {% if job.start_date or job.end_date %}
+              <p class="resume-job-dates">{{ job.start_date }}{% if job.start_date and job.end_date %} – {% endif %}{{ job.end_date }}</p>
+              {% endif %}
+              {% if job.summary %}<p style="font-size:.875rem;color:var(--muted-fg);margin:.25rem 0 .375rem;line-height:1.55;">{{ job.summary }}</p>{% endif %}
+              {% if job.highlights %}
+              <ul class="resume-ul">
+                {% for h in job.highlights %}<li>{{ h }}</li>{% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </section>
           {% endif %}
 
+          <!-- Projects -->
           {% if projects %}
-            <section>
-              <h2 class="section-heading">Projects</h2>
-              {% for project in projects %}
-                <section>
-                  <h3>
-                    {% if project.url %}
-                      <a href="{{ project.url }}">{{ project.title }}</a>
-                    {% else %}
-                      {{ project.title }}
-                    {% endif %}
-                  </h3>
-                  {% if project.summary %}<p>{{ project.summary }}</p>{% endif %}
-                  {% if project.highlights %}
-                    <ul>
-                      {% for highlight in project.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
+          <section class="resume-section" aria-labelledby="r-proj">
+            <h2 class="resume-section-heading" id="r-proj">Projects</h2>
+            {% for project in projects %}
+            <div class="resume-job">
+              <h3 class="resume-job-title">
+                {% if project.url %}<a href="{{ project.url }}" rel="noopener noreferrer">{{ project.title }}</a>{% else %}{{ project.title }}{% endif %}
+              </h3>
+              {% if project.summary %}
+              <p style="font-size:.875rem;color:var(--muted-fg);margin:.25rem 0 .375rem;line-height:1.55;">{{ project.summary }}</p>
+              {% endif %}
+              {% if project.highlights %}
+              <ul class="resume-ul">
+                {% for h in project.highlights %}<li>{{ h }}</li>{% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          <!-- Achievements -->
+          {% if achievements %}
+          <section class="resume-section" aria-labelledby="r-ach">
+            <h2 class="resume-section-heading" id="r-ach">Awards & Achievements</h2>
+            {% for ach in achievements %}
+            <div style="margin-bottom:.75rem;">
+              <p style="font-size:.9375rem;font-weight:500;margin:0 0 .125rem;">{{ ach.name }}</p>
+              {% if ach.description %}<p style="font-size:.8125rem;color:var(--muted-fg);margin:0;">{{ ach.description }}</p>{% endif %}
+            </div>
+            {% endfor %}
+          </section>
           {% endif %}
         </main>
 
-        <!-- Sidebar Section -->
+        <!-- SIDEBAR COLUMN -->
         <aside>
-          {% if languages %}
-            <section>
-              <h2 class="section-heading">Languages</h2>
-              <ul class="unstyled-list">
-                {% for lang in languages %}
-                  <li>
-                    <h3>{{ lang.language }}</h3>
-                    <p class="section-label">{{ lang.fluency }}</p>
-                  </li>
-                {% endfor %}
-              </ul>
-            </section>
+          <!-- Skills -->
+          {% if skills %}
+          <section class="resume-section" aria-labelledby="r-skills">
+            <h2 class="resume-section-heading" id="r-skills">Skills</h2>
+            {% for skill in skills %}
+            <div class="resume-aside-item">
+              <p class="resume-aside-label">{{ skill.name }}</p>
+              <div class="resume-skill-bar">
+                <div class="resume-skill-fill" style="width:{{ skill.proficiency }}%;"></div>
+              </div>
+              <p style="font-size:.75rem;color:var(--muted-fg);margin:.25rem 0 0;">{{ skill.proficiency_label }}</p>
+            </div>
+            {% endfor %}
+          </section>
           {% endif %}
 
+          <!-- Education -->
+          {% if education %}
+          <section class="resume-section" aria-labelledby="r-edu">
+            <h2 class="resume-section-heading" id="r-edu">Education</h2>
+            {% for edu in education %}
+            <div class="resume-aside-item">
+              <p class="resume-aside-label">{{ edu.location }}</p>
+              <p class="resume-aside-value" style="font-size:.875rem;line-height:1.4;">
+                {% if edu.url %}<a href="{{ edu.url }}" rel="noopener noreferrer">{{ edu.institution }}</a>{% else %}{{ edu.institution }}{% endif %}
+              </p>
+              {% if edu.degrees %}
+              <ul class="resume-ul" style="margin-top:.375rem;">
+                {% for d in edu.degrees %}<li>{{ d }}</li>{% endfor %}
+              </ul>
+              {% endif %}
+              {% if edu.gpa_cumulative %}<p style="font-size:.75rem;color:var(--muted-fg);margin:.25rem 0 0;">GPA: {{ edu.gpa_cumulative }}</p>{% endif %}
+              {% if edu.graduation_date %}<p style="font-size:.75rem;color:var(--muted-fg);margin:.125rem 0 0;">Graduating: {{ edu.graduation_date }}</p>{% endif %}
+            </div>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          <!-- Certifications -->
+          {% if certifications %}
+          <section class="resume-section" aria-labelledby="r-cert">
+            <h2 class="resume-section-heading" id="r-cert">Certifications</h2>
+            {% for cert in certifications %}
+            <div class="resume-cert-item">
+              {% if cert.url and cert.url != '' and cert.url != 'Credly Credential' %}
+              <a href="{{ cert.url }}" rel="noopener noreferrer" style="color:var(--foreground);">{{ cert.name }}</a>
+              {% else %}
+              {{ cert.name }}
+              {% endif %}
+            </div>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          <!-- Volunteer -->
           {% if volunteer_experience %}
-            <section>
-              <h2 class="section-heading">Volunteer Experience</h2>
-              {% for vol in volunteer_experience %}
-                <section>
-                  <h3>
-                    {% if vol.url %}
-                      {{ vol.position }} at <a href="{{ vol.url }}">{{ vol.organization }}</a>
-                    {% else %}
-                      {{ vol.position }} at {{ vol.organization }}
-                    {% endif %}
-                  </h3>
-                  {% if vol.start_date and vol.end_date %}
-                    <p class="section-label">{{ vol.start_date }} - {{ vol.end_date }}</p>
-                  {% endif %}
-                  {% if vol.summary %}<p>{{ vol.summary }}</p>{% endif %}
-                  {% if vol.highlights %}
-                    <ul>
-                      {% for highlight in vol.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
+          <section class="resume-section" aria-labelledby="r-vol">
+            <h2 class="resume-section-heading" id="r-vol">Volunteer</h2>
+            {% for vol in volunteer_experience %}
+            <div class="resume-aside-item">
+              <p class="resume-aside-label">{{ vol.organization }}</p>
+              <p class="resume-aside-value" style="font-size:.875rem;">{{ vol.position }}</p>
+              {% if vol.summary %}<p style="font-size:.75rem;color:var(--muted-fg);margin:.25rem 0 0;line-height:1.4;">{{ vol.summary }}</p>{% endif %}
+            </div>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          <!-- Languages -->
+          {% if languages %}
+          <section class="resume-section" aria-labelledby="r-lang">
+            <h2 class="resume-section-heading" id="r-lang">Languages</h2>
+            {% for lang in languages %}
+            <div class="resume-aside-item">
+              <p class="resume-aside-value" style="font-size:.875rem;">{{ lang.language }}</p>
+              <p class="resume-aside-label">{{ lang.fluency }}</p>
+            </div>
+            {% endfor %}
+          </section>
           {% endif %}
         </aside>
-      </div>
-    </div>
-    <script src="js/app.js"></script>
+
+      </div><!-- /.resume-layout -->
+    </div><!-- /container -->
+
+    <script src="js/app.js" defer></script>
+    <style>
+      @media print { .no-print { display: none !important; } }
+    </style>
   </body>
 </html>

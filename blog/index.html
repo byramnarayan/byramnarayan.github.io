@@ -1,18 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Blog - {data['name']}</title>
-  <link rel="stylesheet" href="../css/main.css">
-  <style>
-    body { display: flex; justify-content: center; align-items: center; height: 100vh; }
-    h1 { color: var(--accent-blue); }
-  </style>
-</head>
-<body>
-  <div style="text-align: center;">
-    <h1>Blog Coming Soon</h1>
-    <a href="../index.html">← Back to Portfolio</a>
-  </div>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog — Ramnarayan Maurya</title>
+    <meta name="description" content="Blog posts and writings by Ramnarayan Maurya on AI, ML, and software engineering.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Design system -->
+    <link rel="stylesheet" href="../css/modern_normalize.css">
+    <link rel="stylesheet" href="../css/kit.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <meta name="theme-color" content="#08090d">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <script>
+      (function(){
+        var t=localStorage.getItem('portfolio-theme');
+        if(!t) t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+        document.documentElement.classList.add('theme-'+t);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <header class="site-header" role="banner">
+      <div class="frame">
+        <a href="../index.html" class="site-logo" aria-label="Back to Portfolio">RM·FOLIO</a>
+        <nav aria-label="Main navigation">
+          <ul class="site-nav">
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../resume.html">Résumé</a></li>
+            <li><a href="index.html" aria-current="page" style="color:var(--accent);">Blog</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button id="theme-toggle" aria-label="Toggle theme">DARK</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Coming soon section -->
+    <section class="hero dashed-b" style="min-height:70vh;display:flex;align-items:center;" aria-label="Blog coming soon">
+      <div class="grid-bg" aria-hidden="true"></div>
+      <div class="frame" style="position:relative;z-index:1;text-align:center;">
+        <div class="rise rise-1" style="margin-bottom:1.5rem;">
+          <span class="eyebrow">Blog</span>
+        </div>
+        <h1 class="rise rise-2" style="font-size:clamp(2rem,6vw,4rem);font-weight:600;letter-spacing:-.03em;margin:0 0 1rem;">
+          Coming Soon.
+        </h1>
+        <p class="rise rise-3" style="max-width:36rem;margin:0 auto 2rem;font-size:1.0625rem;color:var(--muted-fg);line-height:1.7;">
+          Writings on AI, machine learning, full-stack development, and building things that matter. Subscribe or check back soon.
+        </p>
+        <div class="rise rise-4" style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;">
+          <a href="../index.html" class="btn btn-primary">← Back to Portfolio</a>
+          <a href="mailto:byramnarayan@gmail.com" class="btn btn-ghost">Get Notified</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="frame">
+        <p class="footer-copy">© 2026 Ramnarayan Maurya. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a href="../index.html">Portfolio</a></li>
+          <li><a href="../resume.html">Résumé</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="../js/app.js" defer></script>
+    <style>
+      .observe-rise { opacity: 0; transform: translateY(12px); transition: opacity .55s ease, transform .55s ease; }
+      .observe-rise.risen { opacity: 1; transform: none; }
+    </style>
+  </body>
 </html>
